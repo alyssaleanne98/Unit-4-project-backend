@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'project_api' # <- add your app here
+
 ]
 
 MIDDLEWARE = [
@@ -75,8 +77,8 @@ WSGI_APPLICATION = 'backend_project4.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql', # <- replace with postgresql
+        'NAME': 'cards', # <- add the name of your DB
     }
 }
 
