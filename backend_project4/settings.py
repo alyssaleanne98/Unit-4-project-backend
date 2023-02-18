@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'project_api' # <- add your app here
+    'project_api', # <- add your app here
+    'corsheaders', #install django rest framework
+
 
 ]
 
