@@ -8,8 +8,8 @@ from .models import Cards
 # Create your views here.
 
 
-class Cards(APIView):
+class Card(APIView):
     pass
 
-class CardsDetail(APIView):
+class CardDetail(APIView):
     pass
