@@ -48,6 +48,6 @@ class CardDetail(APIView):
     def get(self, request, pk):
         #Show request
         print(request)
-        cards = get_object_or_404(Cards, pk=pk)
-        data = CardsSerializers(cards).data
-        return Response(data)
+        cards = get_object_or_404(Cards, pk=pk) #get book
+        data = CardsSerializers(cards).data #format it
+        return Response(data) #send it back
