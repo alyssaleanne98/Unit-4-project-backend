@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView #as super to your class
 from rest_framework.response import Response #to send data to frontend
 from rest_framework import status # to include status codes in your response
 from .models import Cards
+from django.http import HttpResponse
 from rest_framework import status #to include status codes in your response
 from .serializers import CardsSerializers #to format data to and from the database, enforces schema
 
@@ -44,4 +45,9 @@ class Card(APIView):
 
 
 class CardDetail(APIView):
-    pass
+    def get(self, request, pk):
+        #Show request
+        print(request)
+        cards = get_object_or_404(Cards, pk=pk)
+        data = CardsSerializers(cards).data
+        return Response(data)
