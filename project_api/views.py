@@ -28,5 +28,20 @@ class Card(APIView):
         data = CardsSerializers(card, many=True).data
         return Response(data)
 
+
+    def post(self, request):
+    #     #Post request
+        print(request.data)
+    #     #format data for postgres
+        cards = CardsSerializers(data=request.data)
+        if cards.is_valid():
+            cards.save()
+            return Response(cards.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(cards.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+
+
 class CardDetail(APIView):
     pass
