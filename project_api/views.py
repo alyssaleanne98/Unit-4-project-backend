@@ -51,3 +51,21 @@ class CardDetail(APIView):
         cards = get_object_or_404(Cards, pk=pk) #get book
         data = CardsSerializers(cards).data #format it
         return Response(data) #send it back
+    
+    def put(self, request, pk):
+        #Update request
+        print(request)
+        cards = get_object_or_404(Cards, pk=pk)
+        updated = CardsSerializers(cards, data=request.data, partial=True)
+        if updated.is_valid():
+            updated.save()
+            return Response(updated.data)
+        else: 
+            return Response(updated.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        #Delete request
+        print(request)
+        cards = get_object_or_404(Cards, pk=pk)
+        cards.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
