@@ -19,7 +19,7 @@ from django.urls import path, include #Add the include method
 urlpatterns = [
     path('admin/', admin.site.urls), #this is a default path that came with Django
     #Add the line below
-    path('cards/', include('project_api.urls'))
+    path('', include('project_api.urls'))
     # path('cards/', include('project_api.urls'))
     
 ]
